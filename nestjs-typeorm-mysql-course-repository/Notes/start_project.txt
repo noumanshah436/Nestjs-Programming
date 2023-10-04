@@ -1,0 +1,53 @@
+nvm use 16
+yarn install
+
+install mysql in mac: https://www.devart.com/dbforge/mysql/how-to-install-mysql-on-macos/
+
+check database:
+mysql -u root -p
+create database my_users_db;
+use my_users_db;
+show tables;
+describe users;
+
+
+
+****************************************************************************************************************
+Docker setup (not works)
+****************************************************************************************************************
+
+To start your Docker Compose setup:
+$ docker-compose up -d
+
+The -d flag stands for "detached mode," which means that the containers will run in the background.
+
+To stop the containers when you're done, you can use the following command:
+$ docker-compose down
+
+This will stop and remove the containers, but it will retain the data in your ./data_project2 volume, so your database data will persist between container restarts.
+
+
+That's it! Your Docker Compose setup with MariaDB and phpMyAdmin should now be up and running. 
+You can access phpMyAdmin at http://localhost:8081 in your web browser and connect to the MySQL database using the credentials specified in your docker-compose.yml file.
+
+server: mysql_project2
+username: local
+password: l0c4l
+
+****************
+
+docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                              NAMES
+8c02e22406bc   phpmyadmin     "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:8081->80/tcp               nestjs-typeorm-mysql-course-repository-phpmyadmin_project2-1
+743e086490e0   mariadb:10.2   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   3306/tcp, 0.0.0.0:3307->3360/tcp   nestjs-typeorm-mysql-course-repository-mysql_project2-1
+
+To access mysql cli run:
+docker exec -it nestjs-typeorm-mysql-course-repository-mysql_project2-1  mysql -u local -pl0c4l
+
+syntax:
+docker exec -it container_name mysql -u your_username -p
+
+To login as a roor user:
+docker exec -it nestjs-typeorm-mysql-course-repository-mysql_project2-1 mysql -u root -p
+password: r00t
+****************

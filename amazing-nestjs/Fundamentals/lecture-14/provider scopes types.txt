@@ -1,0 +1,15 @@
+
+
+DEFAULT:
+// one shared instance is used everywhere
+// Nestjs uses { scope: Scope.DEFAULT } by default
+
+REQUEST:
+// new instance is created whenever a HTTP request comes in and destroyed after request completion
+@Injectable({ scope: Scope.REQUEST })
+// controller instance is created on every request, because it injects a `scope.REQUEST` based dependency
+// controller eventually becomes request scope based
+
+TRANSIENT:
+// new dedicated instance is created for each consumer of this dependency
+@Injectable({ scope: Scope.TRANSIENT })

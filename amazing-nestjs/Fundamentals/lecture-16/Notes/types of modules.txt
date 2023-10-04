@@ -1,0 +1,63 @@
+In NestJS, modules are a fundamental organizational unit used to structure and manage an application. 
+
+There are several types of modules in NestJS:
+
+Feature Modules: 
+These are the most common type of modules in NestJS. 
+They encapsulate a specific feature or domain of your application. 
+Feature modules typically contain controllers, services, and other related components.
+ They help keep your codebase organized and maintainable by grouping related functionality together.
+
+****************************
+
+Core Module: 
+The core module contains essential, application-wide functionality and services that are used throughout the entire application.
+ It often includes providers for services that should have a single instance shared across the entire application, such as authentication and logging services.
+
+****************************
+
+Shared Module:
+The module which we import in another module is called shared module.
+The shared module contains code that can be reused across multiple feature modules. 
+This includes common components, pipes, and utilities that are shared among different parts of the application. 
+Shared modules help promote code reusability.
+
+Example;
+suppose we can import users module in employees module, 
+now we can use all the classes in employees-module that the user module exports.
+Note: If we use any other provider of UsersModule(in employees module) that it do not exports  , it cause error.
+
+@Module({
+  ...
+  imports: [UsersModule],
+  ...
+})
+
+
+****************************
+
+Global Module: 
+Global modules are used to import and configure third-party libraries or modules that need to be available throughout the application, regardless of the feature modules.
+These modules are typically imported in the root module (AppModule) and can provide global configuration settings.
+
+@Global()
+@Module({
+  exports: [UserService]
+})
+
+Now there is no need to import that UsersModule in any module, we can use UsersModule anywhere in our application,
+Now we can directly use classes that UsersModule module exports(UserService) without importing the UsersModule.
+
+We still need to import this module in our root module (app.module.ts)
+
+****************************
+
+Dynamic Modules: Dynamic modules are created at runtime and are useful for scenarios where you need to configure a module based on dynamic data or conditions. They are defined using the register method of the Module class and can be used to load modules dynamically.
+
+****************************
+
+Testing Module: This is not a specific module type but a concept in NestJS for creating modules specifically for testing purposes. Testing modules help you isolate and mock dependencies when writing unit tests for your application.
+
+****************************
+
+Understanding and properly organizing modules in your NestJS application is crucial for maintaining a clean and scalable codebase. Each module type serves a specific purpose in structuring and managing the application's functionality.

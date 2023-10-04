@@ -1,0 +1,17 @@
+
+Till now we are validating the simple form of data such as primitive values coming in the request. 
+
+But to validate the objects, nested objects, or complex forms of data we can use the JOI package to validate against a schema, and this technique is called Schema-based validation. 
+
+In this video, we will learn Schema-based validation by creating a custom validation pipe.
+
+Video steps:
+
+1) create DTO (just the body data type in this case)
+
+2)
+npm install joi --save
+
+3) create schema (contain contraints and validations)
+
+Note: joi only do validation, ( not do transformation)

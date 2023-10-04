@@ -1,0 +1,93 @@
+
+Provider = any class that can be injected as a dependency
+
+Injection token is just a reference to the injected class that tell the IOC which instance to be injected.
+
+constructor(private prisma: PrismaService) {}
+
+*****************
+
+Key points of dependency injection:
+
+1) For any provider, we need to have it's module.
+2) To create a class which can be used as a dependency(provider):
+    a) decorate it with @Injectable
+    b) we need to register the provider in the module providers array,
+        so that it can be instantiated in the IOC container and injected whereever someone depends on it.
+3) We have a specific injector to each module in IOC container
+  (injector have the provider instances of that module)
+4) Only one instance is created for each provider in it's injector.
+5) Providers in same module can inject each other (same scope)
+6) Ways to use providers of other modules:
+    a) If one module(A) need providers of other module(B), we need to import module(B) in module(A),
+        now module(A) can use the providers of module(B).
+    b) We can register provider of other module(B) in my module(A) in it's providers list,
+        Now I have a separate instance of that provider in IOC injector of module(A)
+        It is an example of dedicated instance.
+7) to inject dependencies, we need injection token
+    So where to mention that token. It can we of three types.
+    a) Constructor injection
+    b) Property injection
+
+********************************************************************
+injector responsibilities in nestjs module?
+********************************************************************
+
+In NestJS, an injector plays a crucial role in managing dependencies and providing instances of classes or objects within a module. The injector is responsible for handling the following responsibilities within a NestJS module:
+
+Dependency Injection:
+
+The injector is responsible for injecting dependencies into various components within a module. This includes services, controllers, and other providers.
+It helps maintain the separation of concerns by providing instances of required dependencies instead of creating them manually.
+
+*********************************
+
+Provider Registration:
+
+The injector registers and maintains a list of providers within a module. Providers can be classes, services, or values that can be injected into other components.
+Providers are typically declared within the providers array of a module, and the injector ensures that they are available for injection when needed.
+
+*********************************
+
+Scope Management:
+
+The injector manages the scope of providers. NestJS supports different provider scopes, such as SINGLETON, REQUEST, and TRANSIENT. The injector ensures that providers are created and maintained according to their specified scope.
+Singleton providers are created once per application, 
+request providers are created per incoming HTTP request, 
+and transient providers are created every time they are requested(separate for each class).
+
+*********************************
+
+Circular Dependency Resolution:
+
+The injector is responsible for detecting and resolving circular dependencies that might arise when two or more providers depend on each other.
+NestJS's injector is capable of handling circular dependencies gracefully and avoiding infinite loops.
+
+*********************************
+
+Lazy Loading:
+
+NestJS supports lazy loading of modules, and the injector is responsible for loading and initializing modules and their providers only when they are needed.
+This helps improve the application's performance by loading resources on-demand.
+
+*********************************
+
+Token Resolution:
+
+Providers are associated with tokens (either classes or custom tokens). The injector resolves these tokens to create instances of the corresponding providers.
+Tokens can be classes, strings, or custom injection tokens.
+
+*********************************
+
+Hierarchical Structure:
+
+NestJS applications often have a hierarchical structure of modules. The injector resolves dependencies not only within a module but also across different modules.
+It ensures that dependencies from imported modules are available for injection in the consuming module.
+
+
+Overall, the injector in NestJS is a critical part of the framework's dependency injection system, ensuring that components within a module can easily access and use their dependencies while promoting modularity and maintainability in the application's codebase. It plays a fundamental role in achieving the Inversion of Control (IoC) principle and making applications more testable and scalable.
+
+******************************************************************
+
+
+

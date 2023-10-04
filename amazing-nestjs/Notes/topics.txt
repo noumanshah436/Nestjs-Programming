@@ -1,0 +1,279 @@
+ 
+https://www.youtube.com/watch?v=8y6E2DIrBZs&list=PLqLR2H326bY6eRNOXJxWQkvKNlzmJQfLj&index=10 
+
+https://github.com/officialcomputerbaba/amazing-nestjs/commits/main?after=fd6ecfefaa03a632ab4131a7a1173596b1c43e05+69&branch=main&qualified_name=refs%2Fheads%2Fmain 
+
+NestJS #1 - Introduction | Course Overview & Prerequisite | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #2 - Architecture | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #3 - Install & Setup | Project Structure | Application Bootstrapping | NPM scripts | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #4 - Routing & Controllers | HTTP Request Handling | HTTP Methods | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #5 - Sending Response | Setting HTTP Status Codes & Headers | Response Redirection | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #6 - Route Parameters | Query Parameters | Request Headers | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #7 - Body | Data Submission | JSON & Urlencoded | DTO - Data Transfer Object | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #8 - Users Resource Example | Routing & HTTP Methods | Using Body & Route Params | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #9 - Sub-Domain Routing | Host & IP Details | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #10 - Dependency Injection | IOC Container | Dependencies Mangament | (Hindi)
+Conceptual theory
+Key points of dependency injection(notes)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+ 
+NestJS #11 - Dependency Injection | Standard Providers | Class as Dependency | (Hindi)
+✱ Standard Providers
+✱ @Injectable decorator
+✱ Constructor Injection
+✱ @Inject decorator
+✱ @Optional decorator
+✱ useClass
+✱ useExisting
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #12 - Dependency Injection | Value Providers | Array, Objects & Primitives as Dep | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #13 - Dependency Injection | Factory Providers | Dynamic & Async Providers | (Hindi)
+00:00 - Introduction
+00:30 - useFactory - Factory Function
+03:43 - "inject property" - Inject Dependencies
+08:05 - Async providers
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+
+NestJS #14 - Dependency Injection | Injection Scopes | DEFAULT, REQUEST & TRANSIENT | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #15 - Services | Concept & Usage | (Hindi)
+CRUD app
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #16 - Modules | Feature Module, Shared Module & Global Module | (Hindi) ✱✱
+00:00 - Introduction
+00:41 - Feature Modules
+06:02 - Multiple Feature Modules
+07:54 - Shared Modules
+09:07 - Global Modules
+10:20 - Importance of exports
+10:41 - Re-export Imported Module
+12:37 - Closing notes 
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #17 - Modules | Dynamic Modules | Concept & register Pattern | Part 1 | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #18 - Modules | Dynamic Modules | forRoot & forFeature Pattern | Part 2 | (Hindi)
+
+00:00 - Introduction
+01:46 - forRoot Pattern
+05:01 - forFeature Pattern
+10:04 - Combined Use
+15:25 - Async Dynamic Modules
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #19 - Router Module | Organize Routes Hierarchy | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #20 - Pipes | Built-in Transformation Pipes | Request Data Transformation | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #21 - Pipes | Built-in Validation Pipes | Enum, UUID & Array of Primitive Values | (Hindi)
+
+Validation Pipes covered
+
+✱ ParseUUIDPipe
+✱ ParseEnumPipe
+✱ ParseArrayPipe
+
+use pipe on controller level (will apply on all the arguments)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #22 - Custom Pipes | ParseDatePipe | PipeTransform & ArgumentMetadata | Part 1 | (Hindi)
+
+00:00 - Introduction
+00:26 - Task overview
+01:35 - PipeTransform Interface | steps to create a custom pipe
+04:44 - Using Custom Pipe
+05:26 - ArgumentMetadata - metatype
+09:24 - ArgumentMetadata - data
+11:51 - Configuring Custom Pipe
+14:37 - Use of @Optional Decorator
+15:36 - Closing notes
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #23 - Custom Pipes | Creating Global Pipe & Module-level Options Provider | Part 2 | (Hindi)
+
+00:00 - Introduction
+00:17 - Module-level Options Provider
+05:04 - Making Pipe Global (see main.ts)
+09:30 - Closing notes
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #24 - Custom Pipes | Schema Based Validation - JOI | Request Data Validation | (Hindi)
+
+00:00 - Introduction
+00:47 - Task Overview - Data Format & DTO
+03:07 - Data Validation Schema - JOI package
+07:02 - JOI Validation Pipe - Custom Pipe
+11:31 - Validation Error Messages
+12:43 - Limitations
+13:47 - Closing notes
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #25 - Decorator Based Validation | Using Class Validator | Request Body Validation | (Hindi)
+
+00:00 - Introduction
+00:54 - Required Dependencies - Class Transformer & Class Validator
+01:16 - Task Overview - Data Format & DTO
+03:11 - Class Validator - Applying Validation Decorators
+07:41 - Using ValidationPipe | Built-in validation pipe
+09:05 - Verifying Validations
+10:33 - Validating Nested Objects Array
+11:08 - Validating DTO Array
+12:43 - ValidationPipe in Query params
+14:02 - Data Transformation
+14:47 - ValidationPipe Options
+19:00 - Making ValidationPipe Global 
+20:36 - Closing notes
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #26 - ArgumentsHost & ExecutionContext | HTTP, Web Sockets & Microservices contexts | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #27 - Exception Filters | Concept & Built-in HTTP Exceptions | Throwing Exceptions | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #28 - Custom Exception Filters | Handle Custom Exception & HttpException | (Hindi)
+
+00:00 - Introduction
+00:42 - Custom Exception - IdException
+03:01 - Custom Exception Filter - IdExceptionFilter
+09:01 - Custom Http Exception Filter
+13:34 - Closing notes
+
+done uptill now
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #29 - Custom Exception Filters | Catch-All Exception Filter | Handle any Exception | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #30 - Application Lifecycle | Lifecycle Phases, Events & Hooks Explained | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #31 - Request Response Lifecycle | Request Flow & Order of Execution | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #32 - Middleware | Functional & Class-based Middleware | Complete Guide | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #33 - Middleware | Multiple Middleware in Chain | Global Middleware | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #34 - Interceptors | Intercept Request & Response | Aspect Oriented Programming | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #35 - Interceptors | Global Interceptor | How To Create HTTP Request Logger | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #36 - Configuration | Env Variables Based Configuration | Part 1 | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #37 - Configuration | Config Files Based Configuration & Namespaces | Part 2 | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #38 - HTTPS Server & Multiple Simultaneous Servers Setup | Listen on Multiple Ports | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #39 - MongoDB & Mongoose | Setup, Configuration Types & Connection | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #40 - MongoDB & Mongoose | Schemas & Collections | Format for Storing Documents | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #41 - MongoDB & Mongoose | Concept of Models & Documents | Model Injection | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #42 - MongoDB & Mongoose | Users CRUD | Using Model for Database Operations | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #43 - MongoDB & Mongoose | Jobs CRUD | Using Model for Database Operations | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #44 - MongoDB & Mongoose | Hooks & Middlewares | Instance, Static & Query Methods | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #45 - MongoDB & Mongoose | Discriminators | Schema Inheritance Mechanism | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #46 - MongoDB & Mongoose | Multiple Database | Multiple Connections | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #47 - MongoDB & Mongoose | Custom Setup & Configuration | Async Config Providers | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+NestJS #48 - MongoDB & Mongoose | Plugins | Plugins Initialization & Registration | (Hindi)
+
+✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱✱
+
+undefined

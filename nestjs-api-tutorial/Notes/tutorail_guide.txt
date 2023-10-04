@@ -1,0 +1,347 @@
+
+https://docs.nestjs.com/
+
+https://www.youtube.com/watch?v=GHTA143_b-s
+
+*******************************
+
+dev@Devs-MacBook-Pro nestjs-api-tutorial % nvm -v
+0.39.5
+dev@Devs-MacBook-Pro nestjs-api-tutorial % node -v
+v16.20.2
+dev@Devs-MacBook-Pro nestjs-api-tutorial % npm -v
+8.19.4
+
+$ nvm use 16
+
+*******************************
+
+npm i -g @nestjs/cli
+
+brew install yarn
+yarn --version 
+
+**********************************
+nvm use 16
+
+create project with yarn
+> nest new nestjs-api-tutorial
+
+start app
+> yarn start:dev
+
+it create dist folder (output compiled javascript files)
+
+**********************************
+
+Modules
+A module is a class annotated with a @Module() decorator. 
+The @Module() decorator provides metadata that Nest makes use of to organize the application structure.
+
+
+> nest g module user
+
+CREATE src/user/user.module.ts (81 bytes)
+UPDATE src/app.module.ts (308 bytes)
+
+> nest g module bookmark
+
+CREATE src/bookmark/bookmark.module.ts (85 bytes)
+UPDATE src/app.module.ts (385 bytes)
+
+**********************************
+
+Services are responsible for executing the business logic(the actual execution logic)
+
+Controllers are responsible for handling incoming requests and returning responses to the client.
+
+For handling requests controller uses the specific function of services.
+
+To use services we ideally need to have an instance of service, so that is done by injections.
+
+**********************************
+
+private is used to directly initialize the instance variables in class.
+
+*******************
+docker (28:24)
+
+> docker compose up dev-db -d
+
+> docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS                    NAMES
+9952c4701a17   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:5436->5432/tcp   nestjs-api-tutorial-dev-db-1
+
+> docker logs 9952c4701a17
+
+*******************
+
+https://www.prisma.io/
+
+we have setup postgress using docker:
+
+we will use prisma for database:
+
+prisma is a  Node.js and TypeScript ORM
+
+> yarn add -D prisma        --  add prisma as a development package
+> yarn add @prisma/client
+> npx prisma init           -- it generates prima directory and the env file
+
+    ✔ Your Prisma schema was created at prisma/schema.prisma
+    You can now open it in your favorite editor.
+
+    warn You already have a .gitignore file. Don't forget to add `.env` in it to not commit any private information.
+
+    Next steps:
+    1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+    2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver, mongodb or cockroachdb.
+    3. Run prisma db pull to turn your database schema into a Prisma schema.
+    4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+
+    More information in our documentation:
+    https://pris.ly/d/getting-started
+
+start from 35:03
+> npx prisma --help
+
+> npx prisma migrate dev
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "nest", schema "public" at "localhost:5436"
+
+✔ Enter a name for the new migration: … init
+Applying migration `20230906105802_init`
+
+The following migration(s) have been created and applied from new schema changes:
+
+migrations/
+  └─ 20230906105802_init/
+    └─ migration.sql
+
+Your database is now in sync with your schema.
+
+✔ Generated Prisma Client (v5.2.0) to ./node_modules/@prisma/client in 82ms
+
+> npx prisma generate      (already done by above command)
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v5.2.0) to ./node_modules/@prisma/client in 75ms
+Start using Prisma Client in Node.js (See: https://pris.ly/d/client)
+```
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+```
+or start using Prisma Client at the edge (See: https://pris.ly/d/accelerate)
+```
+import { PrismaClient } from '@prisma/client/edge'
+const prisma = new PrismaClient()
+```
+
+See other ways of importing Prisma Client: http://pris.ly/d/importing-client
+
+> npx prisma studio
+this will open a UI window in browser
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma Studio is up on http://localhost:5555
+
+*******************
+create module with name prisma as we do before 
+
+> nest g module prisma
+
+CREATE src/prisma/prisma.module.ts (83 bytes)
+UPDATE src/app.module.ts (273 bytes)
+
+> nest g service prisma --no-spec
+
+CREATE src/prisma/prisma.service.ts (90 bytes)
+UPDATE src/prisma/prisma.module.ts (163 bytes)
+
+*******************
+
+import handling of prisma
+
+Request decorator:
+Give the request object just like in express
+
+Body decorator:
+Give the body of the request
+
+DTO:
+We define interface(type) for the body object here
+
+************************************************************************
+data validations:
+
+Pipes
+A pipe is a class annotated with the @Injectable() decorator, which implements the PipeTransform interface.
+
+Pipe are just functions that transform your data.
+https://docs.nestjs.com/pipes#class-validator
+
+> yarn add class-validator class-transformer
+
+also add in main.ts useGlobalPipes
+
+******************
+
+password hash using argon2 (we can also use bcrypt)
+
+> yarn add argon2
+
+*****************
+
+we need to run again if we change our databases schema:
+
+npx prisma migrate dev
+
+and restart studio 
+
+npx prisma studio
+
+**********************************
+
+help in prisma:
+
+npx prisma migrate --help
+
+  Create a migration from changes in Prisma schema, apply it to the database, trigger generators (e.g. Prisma Client)
+  $ prisma migrate dev
+
+  Reset your database and apply all migrations
+  $ prisma migrate reset
+
+  Apply pending migrations to the database in production/staging
+  $ prisma migrate deploy
+
+  Check the status of migrations in the production/staging database
+  $ prisma migrate status
+
+  Specify a schema
+  $ prisma migrate status --schema=./schema.prisma
+
+**********************************
+
+Add scripts in package.json:
+
+yarn db:dev:restart
+
+**********************************
+
+yarn add @nestjs/config
+
+******************************************************************
+https://docs.nestjs.com/security/authentication
+https://www.passportjs.org/
+
+Authentication:
+
+- Only authentic users should access our website.
+- For this use case, clients will start by authenticating with a username and password. 
+  Once authenticated, the server will issue a JWT that can be sent as a bearer token in an authorization header on subsequent requests to prove authentication.
+- This behaviour is similar to the session except that the sessions are being passed automatically with each request,
+  while JWT needs to be passed manually with the request
+
+Behind the hood nestjs uses passport.
+Passport is an authentication framework for Node.js.
+
+In this project we will use jwt, so basically user will give email and password and will receive a jwt token.
+
+JWT:
+JWT is just a string with the Header, data and Signature.
+JWT stands for "JSON Web Token." It is a compact, URL-safe means of representing claims to be transferred between two parties, typically as part of an authentication process or for ensuring the integrity of transmitted data.
+JWTs are widely used in modern web applications for authentication and authorization purposes.
+
+JWTs consist of three parts:
+1) Header: The header typically consists of two parts: the type of the token (which is JWT) and the signing algorithm being used, such as HMAC SHA256 or RSA.
+2) Payload: The payload contains the claims, which are statements about an entity (typically, the user) and additional data.
+  and basically this is the json data that is encoded in base-64.
+  There are three types of claims: registered, public, and private claims.
+    Registered claims include things like the issuer ("iss") and expiration time ("exp"). 
+    Public claims are defined by the user and should be agreed upon between the parties using the JWT. 
+    Private claims are custom claims created to share information between parties that agree on using them.
+3) Signature: To create the signature part you have to take the encoded header, the encoded payload, a secret, and the algorithm specified in the header and sign that.
+
+**********************************
+Implement authentication in nestjs:
+
+Using passport js & jwt module with nestJs 
+
+https://docs.nestjs.com/security/authentication#creating-an-authentication-module
+https://jwt.io/
+
+yarn add @nestjs/passport passport @nestjs/jwt passport-jwt 
+yarn add -D @types/passport-jwt
+
+@nestjs/jwt: this is used to sign-in the code tokens and this under the hood uses "Json Web token" library  
+**************
+
+implement jwt stretegy
+
+***************
+
+> nest g controller user --no-spec 
+
+CREATE src/user/user.controller.ts (97 bytes)
+UPDATE src/user/user.module.ts (166 bytes)
+
+
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('users')
+export class UserController {
+
+    // http://localhost:3333/users/me
+    @Get('me')
+    getme(){
+        return "Hello world"
+    }
+}
+
+***************
+
+Guards
+A guard is a class annotated with the @Injectable() decorator, which implements the CanActivate interface.
+
+Guard allow or not allow the execution the execution of the endpoint
+
+
+***************
+https://pactumjs.github.io/
+
+Test :
+
+> yarn add -D pactum
+> yarn add -D dotenv-cli
+
+> yarn test:e2e
+
+To see prisma studio for test database:
+> npx dotenv -e .env.test -- prisma studio
+
+pactum is a request making api for tests
+
+*****************
+for edit user service:
+
+nest g service user --no-spec
+
+*****************
+
+Bookmarks
+
+> nest g service bookmark --no-spec 
+
+CREATE src/bookmark/bookmark.service.ts (92 bytes)
+UPDATE src/bookmark/bookmark.module.ts (171 bytes)
+
+> nest g controller bookmark --no-spec 
+
+CREATE src/bookmark/bookmark.controller.ts (105 bytes)
+UPDATE src/bookmark/bookmark.module.ts (268 bytes)

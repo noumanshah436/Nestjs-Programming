@@ -1,0 +1,14 @@
+POST localhost:3000/jobs/4/interview-iso
+
+body:
+{
+    "timestamp": {{$timestamp}}
+}
+
+output;
+{
+    "jobId": 4,
+    "date": "2023-09-22T20:07:00.000Z"
+}
+
+*******************

@@ -1,0 +1,5 @@
+yarn add @nestjs/typeorm typeorm mysql2
+
+nest g module users
+nest g controller  users/controllers/user
+nest g service  users/services/user

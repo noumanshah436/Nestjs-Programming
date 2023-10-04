@@ -1,0 +1,81 @@
+The decorator syntax in Nest.js primarily comes from TypeScript rather than JavaScript. While TypeScript is a strict syntactical superset of JavaScript, it extends JavaScript by adding features like static typing and decorators.
+
+Decorators are a TypeScript feature that allows you to add metadata to classes, methods, properties, and parameters. Nest.js uses decorators extensively to define various aspects of its application, such as routing, middleware, and dependency injection.
+
+For example, in Nest.js, you might use decorators like @Module, @Controller, @Injectable, @Get, @Post, etc., to define modules, controllers, services, and routes. These decorators are all TypeScript annotations used to configure and structure your Nest.js application.
+
+So, in summary, while the underlying code and functionality of Nest.js may involve JavaScript, the decorator syntax itself comes from TypeScript, making it a powerful tool for building maintainable and strongly-typed Node.js applications.
+
+*************
+
+Decorators (Nest.js):
+
+Decorators are primarily used for structuring and configuring the components of a Nest.js application, such as modules, controllers, and services.
+They help define routes, inject dependencies, and set up various aspects of the application's behavior.
+Decorators are applied to classes, methods, properties, and parameters.
+They are a TypeScript-specific feature and are not part of vanilla JavaScript.
+
+
+***************
+Dependency Injection:
+
+nestjs uses dependency injection.
+It creates one instance and store that instannce in a container(that the framework manages),
+and anywhere you need that instance, you inject it in the application, instead of craeting a new instance. 
+
+***************
+
+Every single provider must have injectable decorator(means that it's a provider)
+So the nestjs will inject that service anywhere in the application that needs it.
+
+So if a another controller needs the user-service, instead of creating the new user-service,
+nestjs provide the already created user_service(managed by the IOC container stands for inversion of control).
+We can also inject one service into another service.
+
+How to use:
+To use user-service we can add that service in the contructor parameters and nestjs will inject taht service into that class.
+So it use dependency injection to inject that service into our controller.
+
+constructor(private userService: UsersService) { }
+
+and use in class like this.userService.method
+***************
+
+Request data validation:
+
+@Post('create')
+@UsePipes(new ValidationPipe())
+createUser(@Body() userData: CreateUserDto) {
+    console.log("inside createUser")
+    return "Valid params received"
+}
+
+With this setup, whenever a request is made to the route where @UsePipes(new ValidationPipe()) is applied,
+NestJS will automatically validate the incoming data against the rules defined in your DTO class 
+(in this case, the CreateUserDto class) using decorators like @IsString and @IsNotEmpty. 
+
+If the data doesn't meet the validation criteria, NestJS will automatically return a validation error response
+
+You can apply UsePipes decorator either at the controller level (to apply it to all routes in the controller) 
+or at the route handler level (to apply it to a specific route as above).
+
+
+***************
+
+middleware is just a function that is called before the actual route handler.
+
+To register our middleware we need our module to implements NestModule 
+
+***************
+Guards:
+
+Guards have a single responsibility.
+They determine whether a given request will be handled by the route handler or not, 
+depending on certain conditions (like permissions, roles, ACLs, etc.) present at run-time.
+
+Guards are used for 
+    authentication(authentic user can access endpoint) and 
+    authorization(authentic user have permissions to do this action)
+
+If user is not authenticated we will use guard 
+to prevent the user from accessing this endpoint because they are not authenticated.

@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mysql_project2:
+    image: mariadb:10.2
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${USER_NAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+    ports:
+      - 3307:3360  # Use a different host port for MySQL to avoid conflict with Project 1
+
+  phpmyadmin_project2:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80  # Use a different host port for phpMyAdmin to avoid conflict with Project 1
+    environment:
+      - PMA_ARBITRARY=1

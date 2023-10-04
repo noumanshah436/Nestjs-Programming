@@ -1,0 +1,27 @@
+Post http://localhost:3333/auth/signup
+
+body in json:
+{
+    "email": "nouman@gmail.com", 
+    "password": "123"
+} 
+
+*************
+
+Post http://localhost:3333/auth/signin
+
+body in json:
+{
+    "email": "nouman@gmail.com", 
+    "password": "123"
+} 
+
+*************
+
+Get http://localhost:3333/users/me
+
+Headers:
+Authorization  Bearer your-token
+
+*************
+

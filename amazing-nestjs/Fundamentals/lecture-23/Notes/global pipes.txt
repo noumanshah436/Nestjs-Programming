@@ -1,0 +1,7 @@
+There are two ways to make pipe global:
+
+1) using main.ts 
+2) using APP_PIPE provider
+
+this will apply this pipe on each route and 
+on each argument of the request

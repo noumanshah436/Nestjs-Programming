@@ -1,0 +1,13 @@
+nvm use 16
+
+1) start docker app (deamon)
+$ yarn db:dev:up
+$ docker compose logs -f dev-db      -- to see container logs
+
+2) terminal-1 run to start:
+$ nvm use 16                    ( remember to use node version 16)
+$ yarn start:dev
+
+3) terminal-2 run prisma studio:
+$ nvm use 16                    ( remember to use node version 16)
+$ npx prisma studio

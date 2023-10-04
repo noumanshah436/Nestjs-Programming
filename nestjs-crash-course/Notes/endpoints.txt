@@ -1,0 +1,44 @@
+Post http://localhost:3001/users/create
+
+with body:
+{
+    "email": "nouman@gmail.com", 
+    "password": "123"
+}
+
+output:
+{ email: 'nouman@gmail.com', password: '123' }
+
+********************
+
+http://localhost:3001/users/123
+
+http://localhost:3001/users/123/344
+
+http://localhost:3001/users?sortBy=asc
+
+************************************************************
+
+Post http://localhost:3001/users/create
+
+with body:
+    {
+        "username": "nouman",
+        "email": "nouman@gmail.com",
+        "age": "23"
+    }
+
+with headers:
+    authorization  -> my_token
+
+response = 201 created
+
+console output:
+    Inside ValidateCreateUserPipe!
+    { username: 'nouman', email: 'nouman@gmail.com', age: 23 }
+    { metatype: [class CreateUserDto], type: 'body', data: undefined }
+    23 is a number. Returning...
+    inside createUser
+    23
+
+************************************************************

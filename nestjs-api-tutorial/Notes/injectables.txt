@@ -1,0 +1,189 @@
+
+Dependency injection:
+
+Dependency injection refers to the process of providing the necessary dependencies (objects, services, or components) that a class or component requires,
+instead of that class or component creating them itself. 
+ 
+These dependencies are typically provided through constructor injection, method injection, or property injection.
+
+******************************************************************************************************************
+
+What is @Injectable() in nestjs and which class will use it?
+
+In NestJS, the @Injectable() decorator is used to mark a class as an injectable component.
+Injectable components are at the heart of NestJS's dependency injection system. 
+
+Here's what it means and how it's used:
+
+1) Marking a Class Injectable:
+When you decorate a class with @Injectable(), you're essentially telling NestJS that instances of this class can be created and managed by the NestJS dependency injection container.
+It's a way of designating a class as a provider that can be injected into other components like controllers, other providers, or modules.
+Injectable classes can have their dependencies(other services in their contructor that it uses) injected automatically, making it easy to manage and organize dependencies in your application.
+
+
+2) Use Cases for @Injectable():
+ Most commonly, you use @Injectable() to mark service classes. 
+ Services in NestJS encapsulate business logic, interact with databases, and perform other application-specific tasks. 
+ By marking a service as injectable, you can easily inject it into controllers and other services.
+
+
+3) Example:
+Here's an example of marking a service as injectable:
+
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class MyService {
+  // Your service logic here
+}
+
+You can then inject this service into controllers, other services, or modules by simply specifying it as a constructor parameter.
+
+import { Controller, Get } from '@nestjs/common';
+import { MyService } from './my-service';
+
+@Controller('example')
+export class ExampleController {
+  constructor(private readonly myService: MyService) {}
+
+  @Get()
+  getHello(): string {
+    return this.myService.getSomeData();
+  }
+}
+
+4) Other Use Cases: While services are the primary use case for @Injectable(), you can also use it for other types of injectable components like custom guards, interceptors, filters, and more.
+
+In summary, @Injectable() is used to mark a class as an injectable component within NestJS,
+ allowing it to be managed by the dependency injection system. This makes it easier to organize and maintain your application's code by facilitating the injection of dependencies where needed.
+
+
+**************************************************** Important ****************************************************
+
+Injectable classes can have their dependencies injected automatically, making it easy to manage and organize dependencies in your application.
+
+what is meant by injected automatically?
+
+
+When we say that injectable classes can have their dependencies "injected automatically" in the context of NestJS, it means that NestJS's dependency injection system takes care of providing instances of the required dependencies to the injectable class without you having to manually create or manage those dependencies yourself.
+
+Here's how it works:
+
+1) Dependency Declaration: 
+In an injectable class (a class marked with the @Injectable() decorator), you declare your dependencies as constructor parameters. These constructor parameters are the classes or services that the current injectable class depends on.
+
+
+import { Injectable } from '@nestjs/common';
+import { SomeService } from './some-service';
+
+@Injectable()
+export class MyService {
+  constructor(private readonly someService: SomeService) {}
+}
+
+2) Dependency Injection: 
+When you use this injectable class in other parts of your application, such as controllers or other services, NestJS's dependency injection system automatically creates instances of the required dependencies (in this case, SomeService) and injects them into the constructor when you instantiate the class.
+
+
+import { Controller, Get } from '@nestjs/common';
+import { MyService } from './my-service';
+
+@Controller('example')
+export class ExampleController {
+  constructor(private readonly myService: MyService) {}
+
+  @Get()
+  getHello(): string {
+    return this.myService.doSomething();
+  }
+}
+
+3) Automatic Resolution: 
+NestJS examines the constructor parameters of the MyService class, sees that it needs an instance of SomeService, and automatically resolves this dependency by creating an instance of SomeService and passing it to the MyService constructor when you create an instance of MyService.
+
+This automatic injection mechanism is what we mean by "injected automatically." It simplifies the process of managing dependencies because you don't have to manually instantiate or wire up dependencies within your classes. NestJS takes care of this behind the scenes, making your code cleaner, more maintainable, and easier to test.
+
+Additionally, this approach enables you to easily swap out real dependencies with mock or test implementations when writing unit tests for your classes, further enhancing the testability of your application.
+
+
+********************************************************************************************************
+Do we need to make our class @Injectable()  , if we want to use a service or provider in my class?
+
+Yes, in NestJS, you should mark a class with the @Injectable() decorator if you want to use it as a service or provider and have dependencies injected into it.
+This decorator tells NestJS that the class is eligible for dependency injection, allowing it to be managed by the NestJS dependency injection container. 
+
+Here's why you should use @Injectable():
+
+1) Dependency Injection: By marking a class as @Injectable(), you can use constructor injection to specify the dependencies that the class requires. These dependencies can be other services, providers, or modules that are also decorated with @Injectable() or provided by NestJS.
+
+2) Automatic Dependency Resolution: NestJS's dependency injection system automatically resolves and injects these dependencies into the class when it is instantiated. This makes it easy to manage and organize your application's dependencies.
+
+3) Testing: Marking your classes as @Injectable() allows you to easily create test instances of these classes and inject mock dependencies for unit testing. This is a crucial aspect of writing testable code.
+
+Here's an example of how to mark a class as @Injectable():
+
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class MyService {
+  constructor(private readonly dependencyService: DependencyService) {}
+
+  // ...
+}
+
+In this example, MyService is marked as @Injectable() and has a dependency on DependencyService, which will be automatically injected when an instance of MyService is created.
+
+In summary, if you want to take advantage of NestJS's dependency injection system and have dependencies injected into your class, you should mark the class with @Injectable(). This is a recommended practice for creating modular, testable, and maintainable code in NestJS.
+
+********************************************************************************************************
+
+what is difference between a service and provider in nestjs
+
+In NestJS, both services and providers are used to define and encapsulate business logic, and they are often used interchangeably.
+ However, there is a subtle difference between them:
+
+1) Service:
+
+Purpose: A service is a class annotated with the @Injectable() decorator. It is typically used to encapsulate business logic, perform operations, and provide functionality to other parts of your application.
+
+Usage: Services are commonly used to handle tasks like data manipulation, interacting with databases, making API calls, and implementing application-specific logic.
+
+Example:
+
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class UserService {
+  getUsers() {
+    // Retrieve and return user data
+  }
+}
+
+2) Provider:
+
+Purpose: A provider is a more general term in NestJS that encompasses various components used within the NestJS ecosystem.
+ Providers can include services, controllers, factories, and more.
+
+Usage: Providers are used to define and configure components that can be injected into other parts of your application.
+In the context of services, a service is also a provider because it can be injected and used as a dependency.
+
+Example:
+
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class SomeService {
+  // ...
+}
+
+// This is also a provider
+export const someServiceProvider = {
+  provide: 'SOME_SERVICE',
+  useClass: SomeService,
+};
+
+
+In summary, a service is a specific type of provider that is used to encapsulate and provide business logic and functionality in your NestJS application. 
+While the terms "service" and "provider" are sometimes used interchangeably when referring to services in NestJS, it's important to understand that "provider" is a more general term that encompasses various types of injectable components, including services. When you define a service using the @Injectable() decorator, you are also creating a provider that can be injected into other parts of your application.
+
+********************************************************************************************************

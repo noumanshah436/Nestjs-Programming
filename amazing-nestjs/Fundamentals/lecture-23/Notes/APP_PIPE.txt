@@ -1,0 +1,54 @@
+APP_PIPE is a built-in feature in NestJS that allows you to apply global pipes to your application. 
+
+Pipes in NestJS are used to transform input data before it reaches the route handler or after it leaves the route handler. 
+
+Global pipes are applied to every incoming request before it is processed by the corresponding route handler.
+
+***************
+
+
+Here's how you can use APP_PIPE in NestJS:
+
+1) Create a custom pipe class. For example, let's create a simple validation pipe:
+
+import { Injectable, PipeTransform, ArgumentMetadata, BadRequestException } from '@nestjs/common';
+
+@Injectable()
+export class ValidationPipe implements PipeTransform {
+
+  transform(value: any, metadata: ArgumentMetadata) {
+
+    // Add your validation logic here
+    if (!value) {
+      throw new BadRequestException('Validation failed: No data provided');
+    }
+    return value;
+  }
+
+}
+
+2) In your module, provide the ValidationPipe as a global pipe using the APP_PIPE token:
+
+import { Module } from '@nestjs/common';
+import { APP_PIPE } from '@nestjs/core';
+
+@Module({
+  providers: [
+    // Other providers
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
+  ],
+})
+export class YourModule {}
+
+
+
+Now, the ValidationPipe will be applied to every incoming request, and it will validate the request data before it reaches the route handler.
+
+You can create multiple custom pipes and apply them in a specific order by providing them as an array in the APP_PIPE token. NestJS will apply these pipes in the order they are defined in the array.
+
+Remember that global pipes are just one way to use pipes in NestJS. You can also apply pipes to specific routes or controllers using decorators like @UsePipes() or by defining pipes directly on route handlers using the @UsePipes() decorator at the method level. 
+
+Global pipes are useful when you want to apply the same transformation or validation logic across multiple routes or throughout your entire application.

@@ -1,0 +1,11 @@
+nest new my-project
+
+using npm
+
+********************************
+
+nvm use 16
+
+npm install joi --save
+
+npm i class-validator class-transformer
