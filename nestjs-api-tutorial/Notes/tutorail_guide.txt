@@ -5,11 +5,11 @@ https://www.youtube.com/watch?v=GHTA143_b-s
 
 *******************************
 
-dev@Devs-MacBook-Pro nestjs-api-tutorial % nvm -v
+$ nvm -v
 0.39.5
-dev@Devs-MacBook-Pro nestjs-api-tutorial % node -v
+$ node -v
 v16.20.2
-dev@Devs-MacBook-Pro nestjs-api-tutorial % npm -v
+$ npm -v
 8.19.4
 
 $ nvm use 16
@@ -19,7 +19,7 @@ $ nvm use 16
 npm i -g @nestjs/cli
 
 brew install yarn
-yarn --version 
+yarn --version
 
 **********************************
 nvm use 16
@@ -35,7 +35,7 @@ it create dist folder (output compiled javascript files)
 **********************************
 
 Modules
-A module is a class annotated with a @Module() decorator. 
+A module is a class annotated with a @Module() decorator.
 The @Module() decorator provides metadata that Nest makes use of to organize the application structure.
 
 
@@ -151,7 +151,7 @@ Prisma schema loaded from prisma/schema.prisma
 Prisma Studio is up on http://localhost:5555
 
 *******************
-create module with name prisma as we do before 
+create module with name prisma as we do before
 
 > nest g module prisma
 
@@ -201,7 +201,7 @@ we need to run again if we change our databases schema:
 
 npx prisma migrate dev
 
-and restart studio 
+and restart studio
 
 npx prisma studio
 
@@ -243,7 +243,7 @@ https://www.passportjs.org/
 Authentication:
 
 - Only authentic users should access our website.
-- For this use case, clients will start by authenticating with a username and password. 
+- For this use case, clients will start by authenticating with a username and password.
   Once authenticated, the server will issue a JWT that can be sent as a bearer token in an authorization header on subsequent requests to prove authentication.
 - This behaviour is similar to the session except that the sessions are being passed automatically with each request,
   while JWT needs to be passed manually with the request
@@ -263,30 +263,30 @@ JWTs consist of three parts:
 2) Payload: The payload contains the claims, which are statements about an entity (typically, the user) and additional data.
   and basically this is the json data that is encoded in base-64.
   There are three types of claims: registered, public, and private claims.
-    Registered claims include things like the issuer ("iss") and expiration time ("exp"). 
-    Public claims are defined by the user and should be agreed upon between the parties using the JWT. 
+    Registered claims include things like the issuer ("iss") and expiration time ("exp").
+    Public claims are defined by the user and should be agreed upon between the parties using the JWT.
     Private claims are custom claims created to share information between parties that agree on using them.
 3) Signature: To create the signature part you have to take the encoded header, the encoded payload, a secret, and the algorithm specified in the header and sign that.
 
 **********************************
 Implement authentication in nestjs:
 
-Using passport js & jwt module with nestJs 
+Using passport js & jwt module with nestJs
 
 https://docs.nestjs.com/security/authentication#creating-an-authentication-module
 https://jwt.io/
 
-yarn add @nestjs/passport passport @nestjs/jwt passport-jwt 
+yarn add @nestjs/passport passport @nestjs/jwt passport-jwt
 yarn add -D @types/passport-jwt
 
-@nestjs/jwt: this is used to sign-in the code tokens and this under the hood uses "Json Web token" library  
+@nestjs/jwt: this is used to sign-in the code tokens and this under the hood uses "Json Web token" library
 **************
 
 implement jwt stretegy
 
 ***************
 
-> nest g controller user --no-spec 
+> nest g controller user --no-spec
 
 CREATE src/user/user.controller.ts (97 bytes)
 UPDATE src/user/user.module.ts (166 bytes)
@@ -336,12 +336,12 @@ nest g service user --no-spec
 
 Bookmarks
 
-> nest g service bookmark --no-spec 
+> nest g service bookmark --no-spec
 
 CREATE src/bookmark/bookmark.service.ts (92 bytes)
 UPDATE src/bookmark/bookmark.module.ts (171 bytes)
 
-> nest g controller bookmark --no-spec 
+> nest g controller bookmark --no-spec
 
 CREATE src/bookmark/bookmark.controller.ts (105 bytes)
 UPDATE src/bookmark/bookmark.module.ts (268 bytes)

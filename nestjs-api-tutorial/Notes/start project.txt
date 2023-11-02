@@ -11,3 +11,23 @@ $ yarn start:dev
 3) terminal-2 run prisma studio:
 $ nvm use 16                    ( remember to use node version 16)
 $ npx prisma studio
+
+4) create or apply database schema changes (required only first time or when schema changes)
+$ npx prisma migrate dev
+
+restart prisma studio
+
+***************************
+
+using npm:
+
+1) npm install
+
+2) npm run db:dev:up
+3) docker compose logs -f dev-db
+
+4) npm run start:dev
+5) npx prisma studio
+
+6) create or apply database schema changes ()
+npx prisma migrate dev
